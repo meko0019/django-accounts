@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+
+    {% block content %}
+    <div class="container">
+     <div class="card text-center" style="width: 30rem;">
+    <div class="card-body">
+    <h5 class="card-subtitle mb-2 text-muted">Sign Up</h5>
+    <form method="POST" novalidate action="{% url 'signup' %}" role="form">
+            {% csrf_token %}
+               {{ form.as_p }}
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-danger">Sign up</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

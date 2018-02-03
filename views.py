@@ -14,3 +14,29 @@ def index(request):
         return redirect('profile')
     else:
         return render(request, 'accounts/index.html')
+
+def signup(request):
+    user = request.user
+    if user.is_authenticated():
+        return redirect('profile')
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user is not None:
+                login(request, user)
+                return redirect('view_profile')
+        else:
+            print(form.errors)
+            return render(request, 'accounts/signup.html', {'form': form} )
+    else:
+        form = UserCreationForm()
+        return render(request, 'accounts/signup.html', {'form': form})	
+
+
+@login_required
+def view_profile(request):
+    args = {'user': request.user}
+
+    return render(request, 'accounts/view_profile.html', args)
