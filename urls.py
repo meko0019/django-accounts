@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', views.index, name = 'index'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', login, {'template_name': 'accounts/login.html', 'redirect_authenticated_user': True}),
-    # url(r'^logout/$', logout,{'next_page': 'index'}, name='logout'),
+    url(r'^logout/$', logout,{'next_page': 'index'}, name='logout'),
     url(r'^profile/$', views.view_profile, name='view_profile'),
     # url(r'^profile/edit$', views.edit_profile, name='edit_profile'),
     # url(r'^profile/change-password/$', views.change_password, name='change_password'),
