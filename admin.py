@@ -44,7 +44,6 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('email',)
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
-admin.site.register(Employee, EmployeeAdmin)
 
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
